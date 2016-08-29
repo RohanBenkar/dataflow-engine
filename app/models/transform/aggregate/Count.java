@@ -8,7 +8,7 @@ import models.dataset.Dataset;
  */
 public class Count extends AggregateFunction{
     @Override
-    protected Object calculate(Dataset dataset, String fieldName) throws InvalidRequest, NumberFormatException {
+    protected Object calculate(Dataset dataset, String fieldName) throws InvalidRequest {
         return dataset.getRecords().size();
     }
 }
