@@ -16,11 +16,19 @@ public abstract class AggregateFunction {
 
     protected abstract Object calculate(Dataset dataset, String fieldName) throws InvalidRequest;
 
-    protected int getIntValue(String input) throws NumberFormatException {
-        return Integer.parseInt(input);
+    protected int getIntValue(String input) throws InvalidRequest {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new InvalidRequest("Invalid field type " +input+ ". Expecting an integer for aggregation.");
+        }
     }
 
-    protected long getLongValue(String input) throws NumberFormatException {
-        return Long.parseLong(input);
+    protected long getLongValue(String input) throws InvalidRequest {
+        try {
+            return Long.parseLong(input);
+        } catch (Exception e) {
+            throw new InvalidRequest("Invalid field type " +input+ ". Expecting a long for aggregation.");
+        }
     }
 }

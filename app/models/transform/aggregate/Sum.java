@@ -10,7 +10,7 @@ import models.dataset.Record;
 public class Sum extends AggregateFunction {
 
     @Override
-    protected Object calculate(Dataset dataset, String fieldName) throws InvalidRequest, NumberFormatException {
+    protected Object calculate(Dataset dataset, String fieldName) throws InvalidRequest {
         int sum = 0;
         for (Record record: dataset.getRecords()) {
             sum += getIntValue(record.getField(fieldName));
